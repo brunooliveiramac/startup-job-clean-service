@@ -1,0 +1,30 @@
+description = "Clean Architecture Example"
+
+subprojects {
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven {
+            url "http://repo.bodar.com"
+        }
+    }
+
+    ext {
+        spring_version = "4.2.5.RELEASE"
+        springboot_version = "2.0.3.RELEASE"
+    }
+
+    ext.libs = [
+    ]
+}
+
+// apply java plugin to all modules
+configure(allprojects - project(":application")) {
+    apply plugin: "java"
+    sourceCompatibility = JavaVersion.VERSION_1_8
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = "2.11"
+}

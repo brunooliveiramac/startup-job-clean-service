@@ -1,0 +1,3 @@
+rootProject.name = 'job'
+
+include "application:core"
