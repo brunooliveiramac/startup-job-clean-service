@@ -46,7 +46,10 @@ subprojects {
             ],
 
             rest                   : [
-                    "org.springframework:spring-web:${spring_version}"
+                    "org.springframework:spring-web:${spring_version}",
+                    "org.codehaus.jackson:jackson-core-asl:1.9.13",
+                    "org.codehaus.jackson:jackson-mapper-asl:1.9.13",
+                    "com.fasterxml.jackson.core:jackson-databind:2.8.7"
             ],
 
             database_initialisation: [

@@ -10,7 +10,7 @@ public class Job {
     private Integer jobId;
 
     @Column
-    private String desciption;
+    private String description;
 
     @Column
     private String name;
@@ -21,6 +21,6 @@ public class Job {
 
 
     public String description() {
-        return desciption;
+        return description;
     }
 }

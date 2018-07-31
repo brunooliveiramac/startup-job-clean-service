@@ -9,25 +9,33 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
 @RestController
-public class JobEntrypoint {
+public class JobEntryPoint {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(JobEntrypoint.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(JobEntryPoint.class);
 
     public static final String API_PATH = "/jobs";
 
     private ObtainJobOpportunitiesUseCase obtainJobOpportunitiesUseCase;
 
-    public JobEntrypoint(ObtainJobOpportunitiesUseCase obtainJobOpportunitiesUseCase) {
+    public JobEntryPoint(ObtainJobOpportunitiesUseCase obtainJobOpportunitiesUseCase) {
         this.obtainJobOpportunitiesUseCase = obtainJobOpportunitiesUseCase;
     }
 
     @RequestMapping(value = API_PATH, method = GET)
-    public List<JobDomain> getDetails() {
-        return obtainJobOpportunitiesUseCase.obtainJobOpportunities();
+    public List<JobDto> getDetails() {
+        return toDto(obtainJobOpportunitiesUseCase.obtainJobOpportunities());
     }
 
+    public List<JobDto> toDto(List<JobDomain> jobDomains){
+        return jobDomains.stream().map(jobDomain -> toDto(jobDomain)).collect(Collectors.toList());
+    }
+
+    private JobDto toDto(JobDomain jobDomain) {
+        return JobDto.Builder.create().desciption(jobDomain.description()).build();
+    }
 }

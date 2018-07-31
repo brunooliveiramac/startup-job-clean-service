@@ -1,6 +1,13 @@
-package com.clean.core.entity;
+package com.clean.entrypoint.rest.job;
 
-public class JobDomain {
+import com.clean.core.entity.Category;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonAutoDetect(fieldVisibility = JsonAutoDetect.Visibility.ANY,
+        getterVisibility = JsonAutoDetect.Visibility.ANY, isGetterVisibility = JsonAutoDetect.Visibility.NONE)
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class JobDto {
 
     private Integer jobId;
 
@@ -9,10 +16,6 @@ public class JobDomain {
     private String name;
 
     private Category category;
-
-    public String description() {
-        return desciption;
-    }
 
     public static class Builder {
 
@@ -33,8 +36,8 @@ public class JobDomain {
         }
 
 
-        public JobDomain build() {
-            JobDomain job = new JobDomain();
+        public JobDto build() {
+            JobDto job = new JobDto();
             job.desciption = description;
             return job;
         }
