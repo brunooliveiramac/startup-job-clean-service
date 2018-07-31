@@ -8,7 +8,6 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class EntryPointConfiguration {
 
-
     @Bean
     public JobEntryPoint jobEntrypoint(ObtainJobOpportunitiesUseCase obtainJobOpportunitiesUseCase) {
         return new JobEntryPoint(obtainJobOpportunitiesUseCase);

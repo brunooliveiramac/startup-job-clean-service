@@ -24,10 +24,6 @@ dependencies {
     compile project(":application:dataproviders")
     compile project(":application:entrypoint")
 
-
-    compile libs.database_initialisation
-
-
-
     compile libs.spring_boot
+    compile libs.database_initialisation
 }

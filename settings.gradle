@@ -1,8 +1,8 @@
 rootProject.name = 'job'
 
 include "application:core"
-include "application:configuration"
 include "application:dataproviders"
 include "application:entrypoint"
+include "application:configuration"
 
 
