@@ -1,6 +1,6 @@
 package com.clean.core.usecase.jobservice;
 
-import com.clean.core.entity.Job;
+import com.clean.core.entity.JobDomain;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ public class ObtainJobOpportunitiesUseCase {
         this.obtainJobs = obtainJobs;
     }
 
-    public List<Job> obtainJobOpportunities() {
+    public List<JobDomain> obtainJobOpportunities() {
         return obtainJobs.obtainJobs();
     }
 }

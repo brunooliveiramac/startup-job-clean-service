@@ -1,7 +1,7 @@
 package com.clean.entrypoint.rest.job;
 
 
-import com.clean.core.entity.Job;
+import com.clean.core.entity.JobDomain;
 import com.clean.core.usecase.jobservice.ObtainJobOpportunitiesUseCase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,7 +26,7 @@ public class JobEntrypoint {
     }
 
     @RequestMapping(value = API_PATH, method = GET)
-    public List<Job> getDetails() {
+    public List<JobDomain> getDetails() {
         return obtainJobOpportunitiesUseCase.obtainJobOpportunities();
     }
 
