@@ -1,0 +1,20 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: job-clean-architecture
+spec:
+  selector:
+    matchLabels:
+      app: job
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app: job
+    spec:
+      containers:
+      - name: job
+        image: brunooliveiramac/job-clean-architecture
+        ports:
+        - containerPort: 8080
+          name: server

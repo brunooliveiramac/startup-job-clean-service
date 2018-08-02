@@ -1,4 +1,4 @@
-rootProject.name = 'job'
+rootProject.name = 'job-clean-archtecture'
 
 include "application:core"
 include "application:dataproviders"
