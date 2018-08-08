@@ -21,3 +21,13 @@ spring:
     host: localhost
     port: 6379
     password: redispass
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    instance-id: ${spring.application.name}:${random.int}
+server:
+  port: 0
+
+

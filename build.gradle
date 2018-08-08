@@ -9,9 +9,11 @@ subprojects {
     }
 
     ext {
-        ff4j_version = "1.6.4"
+        ff4j_version = "1.6.5"
         spring_version = "4.2.5.RELEASE"
         springboot_version = "2.0.3.RELEASE"
+        spring_cloud_version = "2.0.1.RELEASE"
+
     }
 
     ext.libs = [
@@ -72,22 +74,19 @@ subprojects {
             ],
 
             configuration                 : [
-                    "org.ff4j:ff4j-core:${ff4j_version}",
                     "org.ff4j:ff4j-web:${ff4j_version}",
-                    "org.ff4j:ff4j-aop:${ff4j_version}",
+                    "org.ff4j:ff4j-spring-boot-web-api:${ff4j_version}",
                     "org.ff4j:ff4j-store-redis:${ff4j_version}",
                     "org.projectlombok:lombok:1.18.2",
                     "org.apache.commons:commons-lang3:3.0"
+            ],
+
+            spring_cloud                   : [
+                    "org.springframework.cloud:spring-cloud-netflix-eureka-client:${spring_cloud_version}"
             ]
     ]
 }
 
-//subprojects { subproject ->
-//    if (subproject.name.startsWith("entrypoint")) {
-//        apply plugin: 'com.github.lkishalmi.gatling'
-//        apply plugin: "scala"
-//    }
-//}
 
 // apply java plugin to all modules
 configure(allprojects - project(":application")) {
