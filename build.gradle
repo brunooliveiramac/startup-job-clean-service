@@ -11,6 +11,7 @@ subprojects {
     }
 
     ext {
+        ff4j_version = "1.6.4"
         spring_version = "4.2.5.RELEASE"
         springboot_version = "2.0.3.RELEASE"
     }
@@ -43,6 +44,7 @@ subprojects {
                     "org.springframework.boot:spring-boot-starter-web:${springboot_version}",
                     "org.springframework.boot:spring-boot-starter-actuator:${springboot_version}",
                     "org.springframework.boot:spring-boot-starter-logging:${springboot_version}",
+                    "org.springframework.boot:spring-boot-starter-data-redis:${springboot_version}"
             ],
 
             rest                   : [
@@ -69,6 +71,15 @@ subprojects {
 
             log                    : [
                     "org.slf4j:slf4j-api:1.7.19"
+            ],
+
+            configuration                 : [
+                    "org.ff4j:ff4j-core:${ff4j_version}",
+                    "org.ff4j:ff4j-web:${ff4j_version}",
+                    "org.ff4j:ff4j-aop:${ff4j_version}",
+                    "org.ff4j:ff4j-store-redis:${ff4j_version}",
+                    "org.projectlombok:lombok:1.18.2",
+                    "org.apache.commons:commons-lang3:3.0"
             ]
     ]
 }

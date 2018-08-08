@@ -19,5 +19,6 @@ dependencies {
     compile project(":application:entrypoint")
 
     compile libs.spring_boot
+    compile libs.configuration
     compile libs.database_initialisation
 }
