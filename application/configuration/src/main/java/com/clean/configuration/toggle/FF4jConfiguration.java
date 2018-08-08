@@ -14,12 +14,13 @@ import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+//http://localhost:8080/ff4j-web-console/features
 
 @Configuration
 @Slf4j
 public class FF4jConfiguration {
 
-  private static final String DEFAULT_CONSOLE = "/ff4j-console/*";
+  private static final String DEFAULT_CONSOLE = "/ff4j-web-console/*";
 
 
   @Bean
