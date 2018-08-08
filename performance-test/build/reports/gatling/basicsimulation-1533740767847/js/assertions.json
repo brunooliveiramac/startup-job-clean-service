@@ -1,0 +1,10 @@
+{
+  "simulation": "jobusecase.BasicSimulation",
+  "simulationId": "basicsimulation",
+  "start": 1533740767847,
+  "description": "",
+  "scenarios": ["Basic Simulation"],
+  "assertions": [
+
+  ]
+}

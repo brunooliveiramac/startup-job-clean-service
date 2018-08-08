@@ -4,5 +4,7 @@ include "application:core"
 include "application:dataproviders"
 include "application:entrypoint"
 include "application:configuration"
+include "performance-test"
+
 
 
