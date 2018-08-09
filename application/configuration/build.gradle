@@ -1,7 +1,5 @@
 description = "Wires the application together."
 
-
-// configure spring boot with gradle: start
 buildscript {
     repositories {
         mavenCentral()
@@ -10,8 +8,8 @@ buildscript {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springboot_version}")
     }
 }
+
 apply plugin: org.springframework.boot.gradle.plugin.SpringBootPlugin
-// configure spring boot with gradle: end
 
 dependencies {
     compile project(":application:core")
