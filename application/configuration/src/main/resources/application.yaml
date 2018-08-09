@@ -2,8 +2,6 @@ spring:
   security:
     basic:
       enabled: false
-  application:
-    name: app
   h2:
     console:
       enabled: true
