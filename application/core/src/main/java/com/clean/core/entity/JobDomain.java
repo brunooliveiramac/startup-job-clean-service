@@ -1,17 +1,23 @@
 package com.clean.core.entity;
 
+import java.util.List;
+
 public class JobDomain {
+
+    private List<CollaboratorDomain> collaborators;
+
+    private CompanyDomain company;
 
     private Integer jobId;
 
-    private String desciption;
+    private String description;
 
     private String name;
 
     private Category category;
 
     public String description() {
-        return desciption;
+        return description;
     }
 
     public static class Builder {
@@ -27,15 +33,15 @@ public class JobDomain {
             return new Builder();
         }
 
-        public Builder desciption(String desciption) {
-            this.description = desciption;
+        public Builder description(String description) {
+            this.description = description;
             return this;
         }
 
 
         public JobDomain build() {
             JobDomain job = new JobDomain();
-            job.desciption = description;
+            job.description = description;
             return job;
         }
 

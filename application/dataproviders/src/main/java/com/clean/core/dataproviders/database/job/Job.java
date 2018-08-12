@@ -7,7 +7,8 @@ public class Job {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer jobId;
+    @Column(name = "job_id")
+    private Integer id;
 
     @Column
     private String description;
@@ -18,6 +19,14 @@ public class Job {
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private Company company;
+
+    @ManyToOne
+    @JoinColumn(name = "collaborator_id")
+    private Collaborator collaborator;
 
 
     public String description() {
