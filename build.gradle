@@ -105,7 +105,10 @@ subprojects {
             ],
 
             spring_cloud                   : [
-                    "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client"
+                    "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client",
+                    "org.springframework.cloud:spring-cloud-starter-feign:1.4.5.RELEASE",
+                    "org.springframework.cloud:spring-cloud-starter-hystrix:1.4.5.RELEASE"
+
             ]
     ]
 }

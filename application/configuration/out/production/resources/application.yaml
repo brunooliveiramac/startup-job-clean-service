@@ -33,3 +33,7 @@ server:
   port: 8085
 
 
+ribbon:
+  eureka:
+    enabled: true
+

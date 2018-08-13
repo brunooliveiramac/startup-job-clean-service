@@ -5,6 +5,7 @@ dependencies {
 
     compile libs.rest
     compile libs.log
+    compile libs.spring_cloud
 }
 
 

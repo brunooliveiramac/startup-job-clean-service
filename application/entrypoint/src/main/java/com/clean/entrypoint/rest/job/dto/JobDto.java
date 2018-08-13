@@ -1,4 +1,4 @@
-package com.clean.entrypoint.rest.job;
+package com.clean.entrypoint.rest.job.dto;
 
 import com.clean.core.entity.Category;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
