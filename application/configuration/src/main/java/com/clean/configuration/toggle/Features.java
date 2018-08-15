@@ -7,7 +7,7 @@ public enum Features {
 
     OBTAIN_AVAILABILITY(
             "obtain-availability",
-            "description",
+            "getDescription",
             false);
 
     private final String key;

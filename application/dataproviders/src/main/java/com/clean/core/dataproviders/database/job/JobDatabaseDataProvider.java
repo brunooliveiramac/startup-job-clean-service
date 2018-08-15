@@ -25,7 +25,13 @@ public class JobDatabaseDataProvider implements ObtainJobs {
     }
 
     private JobDomain toDomain(Job job){
-        return JobDomain.Builder.create().description(job.description()).build();
+        return JobDomain.Builder.create()
+                .description(job.getDescription())
+                .quantity(job.getQuantity())
+                .name(job.getName())
+                .company(job.getCompany().getName())
+                .local(job.getLocal())
+                .build();
     }
 
 

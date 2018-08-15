@@ -16,6 +16,12 @@ public class Job {
     @Column
     private String name;
 
+    @Column
+    private int quantity;
+
+    @Column
+    private String local;
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
@@ -29,7 +35,35 @@ public class Job {
     private Collaborator collaborator;
 
 
-    public String description() {
+    public String getDescription() {
         return description;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getLocal() {
+        return local;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public Collaborator getCollaborator() {
+        return collaborator;
     }
 }
