@@ -1,13 +1,10 @@
-package com.clean.configuration.toggle;
+package com.clean.core.gateway.ff4j;
 
-import lombok.Getter;
-
-@Getter
 public enum Features {
 
-    OBTAIN_AVAILABILITY(
-            "obtain-availability",
-            "getDescription",
+    SCHEDULER(
+            "scheduler",
+            "scheduler user for interview",
             false);
 
     private final String key;
@@ -18,5 +15,17 @@ public enum Features {
         this.key = key;
         this.description = description;
         this.defaultValue = defaultValue;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public boolean isDefaultValue() {
+        return defaultValue;
     }
 }

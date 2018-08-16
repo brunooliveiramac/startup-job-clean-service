@@ -1,6 +1,7 @@
 package com.clean.configuration.usecases;
 
 
+import com.clean.core.usecase.jobservice.JobDetail;
 import com.clean.core.usecase.jobservice.ObtainJobOpportunitiesUseCase;
 import com.clean.core.usecase.jobservice.ObtainJobs;
 import com.clean.core.usecase.scheduler.ScheduleInterview;
@@ -12,8 +13,8 @@ import org.springframework.context.annotation.Configuration;
 public class UseCaseConfiguration {
 
     @Bean
-    public ObtainJobOpportunitiesUseCase obtainJobOpportunitiesUseCase(ObtainJobs obtainJobs) {
-        return new ObtainJobOpportunitiesUseCase(obtainJobs);
+    public ObtainJobOpportunitiesUseCase obtainJobOpportunitiesUseCase(ObtainJobs obtainJobs, JobDetail jobDetail) {
+        return new ObtainJobOpportunitiesUseCase(obtainJobs, jobDetail);
     }
 
     @Bean

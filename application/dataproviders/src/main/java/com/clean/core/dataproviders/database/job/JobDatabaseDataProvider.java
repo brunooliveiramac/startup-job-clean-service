@@ -1,13 +1,14 @@
 package com.clean.core.dataproviders.database.job;
 
 import com.clean.core.entity.JobDomain;
+import com.clean.core.usecase.jobservice.JobDetail;
 import com.clean.core.usecase.jobservice.ObtainJobs;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class JobDatabaseDataProvider implements ObtainJobs {
+public class JobDatabaseDataProvider implements ObtainJobs, JobDetail {
 
     private EntityManager manager;
 
@@ -26,6 +27,7 @@ public class JobDatabaseDataProvider implements ObtainJobs {
 
     private JobDomain toDomain(Job job){
         return JobDomain.Builder.create()
+                .id(job.getId())
                 .description(job.getDescription())
                 .quantity(job.getQuantity())
                 .name(job.getName())
@@ -34,7 +36,9 @@ public class JobDatabaseDataProvider implements ObtainJobs {
                 .build();
     }
 
-
-
-
+    @Override
+    public JobDomain byId(Integer id) {
+        return toDomain((Job) manager.createQuery("FROM Job j WHERE  j.id =: id")
+                .setParameter("id", id).getSingleResult());
+    }
 }

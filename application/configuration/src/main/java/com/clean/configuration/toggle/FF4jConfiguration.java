@@ -1,5 +1,8 @@
 package com.clean.configuration.toggle;
 
+
+
+import com.clean.core.gateway.ff4j.*;
 import org.apache.commons.lang3.StringUtils;
 import org.ff4j.FF4j;
 import org.ff4j.core.Feature;
@@ -19,7 +22,6 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnClass({FF4j.class})
 @ComponentScan(value = {"org.ff4j.spring.boot.web.api", "org.ff4j.services", "org.ff4j.aop", "org.ff4j.spring"})
 public class FF4jConfiguration {
-
 
     @Bean
     public FF4j getFF4j() {

@@ -25,6 +25,7 @@ public class JobModel {
 
     public static class Builder {
 
+        private int id;
         private String description;
         private String name;
         private int quantity;
@@ -66,6 +67,11 @@ public class JobModel {
             return this;
         }
 
+        public Builder id(int id) {
+            this.id = id;
+            return this;
+        }
+
         public JobModel build() {
             JobModel job = new JobModel();
             job.desciption = description;
@@ -73,8 +79,10 @@ public class JobModel {
             job.quantity = quantity;
             job.name = name;
             job.local = local;
+            job.jobId = id;
             return job;
         }
+
 
 
     }

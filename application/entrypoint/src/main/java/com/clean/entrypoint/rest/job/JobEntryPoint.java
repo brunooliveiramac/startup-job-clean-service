@@ -1,6 +1,6 @@
 package com.clean.entrypoint.rest.job;
 
-
+import com.clean.core.gateway.ff4j.*;
 import com.clean.core.entity.JobDomain;
 import com.clean.core.usecase.jobservice.ObtainJobOpportunitiesUseCase;
 import com.clean.core.usecase.scheduler.ScheduleInterviewUseCase;
@@ -9,6 +9,7 @@ import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.netflix.ribbon.RibbonClient;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,25 +29,38 @@ public class JobEntryPoint {
     public static final String SCHEDULE_PATH = "/schedule";
 
 
+    private FeatureToggleGateway featureToggleGateway;
     private ObtainJobOpportunitiesUseCase obtainJobOpportunitiesUseCase;
     private ScheduleInterviewUseCase scheduleInterviewUseCase;
 
-    public JobEntryPoint(ObtainJobOpportunitiesUseCase obtainJobOpportunitiesUseCase,
+    public JobEntryPoint(FeatureToggleGateway featureToggleGateway,
+                         ObtainJobOpportunitiesUseCase obtainJobOpportunitiesUseCase,
                          ScheduleInterviewUseCase scheduleInterviewUseCase) {
+        this.featureToggleGateway = featureToggleGateway;
         this.obtainJobOpportunitiesUseCase = obtainJobOpportunitiesUseCase;
         this.scheduleInterviewUseCase = scheduleInterviewUseCase;
     }
 
     @RequestMapping(value = JOB_PATH, method = GET)
-    public List<JobModel> getDetails() {
+    public List<JobModel> getDetails() throws InterruptedException {
+        Thread.sleep(5000);
         return toModel(obtainJobOpportunitiesUseCase.obtainJobOpportunities());
     }
 
+    @RequestMapping(value = JOB_PATH + "/{id}", method = GET)
+    public JobModel detail(@PathVariable("id") Integer id) {
+        return toModel(obtainJobOpportunitiesUseCase.jobDetail(id));
+    }
 
     @HystrixCommand(fallbackMethod = "scheduleFallBack")
     @RequestMapping(value = SCHEDULE_PATH, method = POST)
     public void schedule() {
         System.out.println("Call JOB MicroService");
+        if(featureToggleGateway.isFeatureEnable(Features.SCHEDULER)){
+            System.out.println("Enabled");
+        } else {
+            System.out.println("Disabled");
+        }
         scheduleInterviewUseCase.scheduleInterview();
     }
 
@@ -60,6 +74,7 @@ public class JobEntryPoint {
 
     private JobModel toModel(JobDomain jobDomain) {
         return JobModel.Builder.create()
+                .id(jobDomain.id())
                 .description(jobDomain.description())
                 .name(jobDomain.name())
                 .quantity(jobDomain.quantity())

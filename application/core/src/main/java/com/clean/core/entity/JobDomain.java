@@ -52,8 +52,13 @@ public class JobDomain {
         return category;
     }
 
+    public int id() {
+        return jobId;
+    }
+
     public static class Builder {
 
+        private int id;
         private String description;
         private String name;
         private String company;
@@ -68,6 +73,12 @@ public class JobDomain {
 
         public static final Builder create() {
             return new Builder();
+        }
+
+
+        public Builder id(Integer id) {
+            this.id = id;
+            return this;
         }
 
         public Builder description(String description) {
@@ -102,8 +113,10 @@ public class JobDomain {
             job.company = company;
             job.local = local;
             job.quantity = quantity;
+            job.jobId = id;
             return job;
         }
+
 
 
     }
