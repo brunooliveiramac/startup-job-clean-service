@@ -1,7 +1,7 @@
 package integration.rest.job;
 
 import com.clean.core.entity.JobDomain;
-import com.clean.core.usecase.job.ObtainJobOpportunitiesUseCase;
+import com.clean.core.usecase.job.ObtainAllJobsUseCase;
 import integration.rest.ApplicationContext;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -16,11 +16,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 public class JobsEntryPointTest extends ApplicationContext {
 
-    private ObtainJobOpportunitiesUseCase obtainJobOpportunitiesUseCase;
+    private ObtainAllJobsUseCase obtainJobOpportunitiesUseCase;
 
     @Test
     public void shouldReturnStatusOkWhenSearchForJobs() throws Exception {
-        obtainJobOpportunitiesUseCase = Mockito.mock(ObtainJobOpportunitiesUseCase.class);
+        obtainJobOpportunitiesUseCase = Mockito.mock(ObtainAllJobsUseCase.class);
         when(obtainJobOpportunitiesUseCase.obtainJobOpportunities())
                 .thenReturn(Arrays.asList(new JobDomain()));
         performGet();

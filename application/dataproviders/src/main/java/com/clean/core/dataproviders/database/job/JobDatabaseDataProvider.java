@@ -1,14 +1,14 @@
 package com.clean.core.dataproviders.database.job;
 
 import com.clean.core.entity.JobDomain;
-import com.clean.core.usecase.job.JobDetail;
-import com.clean.core.usecase.job.ObtainJobs;
+import com.clean.core.usecase.job.ObtainJobDetail;
+import com.clean.core.usecase.job.ObtainAllJobs;
 
 import javax.persistence.EntityManager;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class JobDatabaseDataProvider implements ObtainJobs, JobDetail {
+public class JobDatabaseDataProvider implements ObtainAllJobs, ObtainJobDetail {
 
     private EntityManager manager;
 

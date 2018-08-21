@@ -4,7 +4,7 @@ import com.clean.core.entity.JobDomain;
 
 import java.util.List;
 
-public interface ObtainJobs {
+public interface ObtainAllJobs {
 
     List<JobDomain> obtainJobs();
 }

@@ -5,14 +5,14 @@ import com.clean.core.entity.JobDomain;
 import java.util.List;
 
 //Inverter a dependência faz com que um cliente não fique frágil a mudanças relacionadas a detalhes de implementação.
-public class ObtainJobOpportunitiesUseCase {
+public class ObtainAllJobsUseCase {
 
-    private final ObtainJobs obtainJobs;
-    private final JobDetail jobDetail;
+    private final ObtainAllJobs obtainJobs;
+    private final ObtainJobDetail jobDetail;
 
 
-    public ObtainJobOpportunitiesUseCase(ObtainJobs obtainJobs,
-                                         JobDetail jobDetail) {
+    public ObtainAllJobsUseCase(ObtainAllJobs obtainJobs,
+                                ObtainJobDetail jobDetail) {
         this.obtainJobs = obtainJobs;
         this.jobDetail = jobDetail;
     }

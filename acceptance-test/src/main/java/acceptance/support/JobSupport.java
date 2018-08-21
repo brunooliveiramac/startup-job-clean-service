@@ -1,9 +1,9 @@
 package acceptance.support;
 
 import com.clean.core.entity.JobDomain;
-import com.clean.core.usecase.job.JobDetail;
-import com.clean.core.usecase.job.ObtainJobOpportunitiesUseCase;
-import com.clean.core.usecase.job.ObtainJobs;
+import com.clean.core.usecase.job.ObtainJobDetail;
+import com.clean.core.usecase.job.ObtainAllJobsUseCase;
+import com.clean.core.usecase.job.ObtainAllJobs;
 import org.mockito.Mockito;
 
 import java.util.Arrays;
@@ -14,16 +14,16 @@ import static org.mockito.Mockito.when;
 
 public class JobSupport {
 
-    private ObtainJobOpportunitiesUseCase obtainJobOpportunitiesUseCase;
+    private ObtainAllJobsUseCase obtainJobOpportunitiesUseCase;
 
-    private ObtainJobs obtainJobs;
-    private JobDetail jobDetail;
+    private ObtainAllJobs obtainJobs;
+    private ObtainJobDetail jobDetail;
 
     public void shouldReturnJobs() {
-        obtainJobs = Mockito.mock(ObtainJobs.class);
-        jobDetail = Mockito.mock(JobDetail.class);
+        obtainJobs = Mockito.mock(ObtainAllJobs.class);
+        jobDetail = Mockito.mock(ObtainJobDetail.class);
 
-        obtainJobOpportunitiesUseCase = new ObtainJobOpportunitiesUseCase(obtainJobs, jobDetail);
+        obtainJobOpportunitiesUseCase = new ObtainAllJobsUseCase(obtainJobs, jobDetail);
 
         when(obtainJobs.obtainJobs()).thenReturn(Arrays.asList(new JobDomain()));
         List<JobDomain> jobDomains = obtainJobOpportunitiesUseCase.obtainJobOpportunities();

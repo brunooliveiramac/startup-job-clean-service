@@ -1,14 +1,15 @@
 package com.clean.configuration.toggle;
 
+import com.clean.core.usecase.ff4j.FeatureToggle;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import com.clean.core.gateway.ff4j.*;
+import com.clean.core.usecase.ff4j.*;
 
 @Configuration
 public class FeatureGatewayConfiguration {
 
     @Bean
-    public FeatureToggleGateway gateway(IsFeatureEnabled featureToggle) {
-        return new FeatureToggleGateway(featureToggle);
+    public FeatureToggle gateway(IsFeatureEnabled featureToggle) {
+        return new FeatureToggle(featureToggle);
     }
 }

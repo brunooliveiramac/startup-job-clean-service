@@ -1,8 +1,8 @@
 package com.clean.entrypoint.rest.job;
 
-import com.clean.core.gateway.ff4j.*;
+import com.clean.core.usecase.ff4j.*;
 import com.clean.core.entity.JobDomain;
-import com.clean.core.usecase.job.ObtainJobOpportunitiesUseCase;
+import com.clean.core.usecase.job.ObtainAllJobsUseCase;
 import com.clean.core.usecase.scheduler.ScheduleInterviewUseCase;
 import com.clean.entrypoint.rest.job.model.JobModel;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
@@ -29,13 +29,13 @@ public class JobEntryPoint {
     public static final String SCHEDULE_PATH = "/schedule";
 
 
-    private FeatureToggleGateway featureToggleGateway;
-    private ObtainJobOpportunitiesUseCase obtainJobOpportunitiesUseCase;
+    private FeatureToggle featureToggleGateway;
+    private ObtainAllJobsUseCase obtainJobOpportunitiesUseCase;
 
     private ScheduleInterviewUseCase scheduleInterviewUseCase;
 
-    public JobEntryPoint(FeatureToggleGateway featureToggleGateway,
-                         ObtainJobOpportunitiesUseCase obtainJobOpportunitiesUseCase,
+    public JobEntryPoint(FeatureToggle featureToggleGateway,
+                         ObtainAllJobsUseCase obtainJobOpportunitiesUseCase,
                          ScheduleInterviewUseCase scheduleInterviewUseCase) {
         this.featureToggleGateway = featureToggleGateway;
         this.obtainJobOpportunitiesUseCase = obtainJobOpportunitiesUseCase;

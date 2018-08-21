@@ -2,7 +2,7 @@ package com.clean.configuration.toggle;
 
 
 
-import com.clean.core.gateway.ff4j.*;
+import com.clean.core.usecase.ff4j.*;
 import org.apache.commons.lang3.StringUtils;
 import org.ff4j.FF4j;
 import org.ff4j.core.Feature;

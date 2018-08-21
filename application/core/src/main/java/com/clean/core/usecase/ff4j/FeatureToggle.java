@@ -1,10 +1,10 @@
-package com.clean.core.gateway.ff4j;
+package com.clean.core.usecase.ff4j;
 
-public class FeatureToggleGateway{
+public class FeatureToggle {
 
     private IsFeatureEnabled featureToggle;
 
-    public FeatureToggleGateway(IsFeatureEnabled featureToggle) {
+    public FeatureToggle(IsFeatureEnabled featureToggle) {
         this.featureToggle = featureToggle;
     }
 

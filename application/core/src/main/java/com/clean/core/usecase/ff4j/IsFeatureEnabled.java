@@ -1,4 +1,4 @@
-package com.clean.core.gateway.ff4j;
+package com.clean.core.usecase.ff4j;
 
 public interface IsFeatureEnabled {
 

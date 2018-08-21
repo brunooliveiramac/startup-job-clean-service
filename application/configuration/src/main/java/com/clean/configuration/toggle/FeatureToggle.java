@@ -1,7 +1,7 @@
 package com.clean.configuration.toggle;
 
-import com.clean.core.gateway.ff4j.Features;
-import com.clean.core.gateway.ff4j.IsFeatureEnabled;
+import com.clean.core.usecase.ff4j.Features;
+import com.clean.core.usecase.ff4j.IsFeatureEnabled;
 import org.ff4j.FF4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
