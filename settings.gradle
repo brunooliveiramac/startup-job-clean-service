@@ -1,10 +1,13 @@
-rootProject.name = 'job-clean-archtecture'
+rootProject.name = 'job-clean-microservice'
 
 include "application:core"
 include "application:dataproviders"
 include "application:entrypoint"
 include "application:configuration"
 include "performance-test"
+include "acceptance-test"
+include "integration-test"
+include "end-to-end-test"
 
 
 

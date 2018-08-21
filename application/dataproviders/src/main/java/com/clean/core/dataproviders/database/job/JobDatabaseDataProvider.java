@@ -1,8 +1,8 @@
 package com.clean.core.dataproviders.database.job;
 
 import com.clean.core.entity.JobDomain;
-import com.clean.core.usecase.jobservice.JobDetail;
-import com.clean.core.usecase.jobservice.ObtainJobs;
+import com.clean.core.usecase.job.JobDetail;
+import com.clean.core.usecase.job.ObtainJobs;
 
 import javax.persistence.EntityManager;
 import java.util.List;

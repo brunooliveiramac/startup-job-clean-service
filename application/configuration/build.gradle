@@ -16,6 +16,7 @@ dependencies {
     compile project(":application:dataproviders")
     compile project(":application:entrypoint")
 
+
     compile libs.spring_boot
     compile libs.spring_cloud
     compile libs.configuration

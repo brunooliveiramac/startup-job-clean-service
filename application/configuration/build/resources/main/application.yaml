@@ -2,8 +2,9 @@ spring:
   security:
     basic:
       enabled: false
-  application:
-    name: app
+  mvc:
+    favicon:
+      enabled: false
   h2:
     console:
       enabled: true
@@ -21,6 +22,7 @@ spring:
     host: localhost
     port: 6379
     password: redispass
+
 eureka:
   client:
     register-with-eureka: true
@@ -34,4 +36,8 @@ eureka:
 server:
   port: 8085
 
+
+ribbon:
+  eureka:
+    enabled: true
 

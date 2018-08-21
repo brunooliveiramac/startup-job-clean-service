@@ -1,9 +1,9 @@
 package com.clean.configuration.usecases;
 
 
-import com.clean.core.usecase.jobservice.JobDetail;
-import com.clean.core.usecase.jobservice.ObtainJobOpportunitiesUseCase;
-import com.clean.core.usecase.jobservice.ObtainJobs;
+import com.clean.core.usecase.job.JobDetail;
+import com.clean.core.usecase.job.ObtainJobOpportunitiesUseCase;
+import com.clean.core.usecase.job.ObtainJobs;
 import com.clean.core.usecase.scheduler.ScheduleInterview;
 import com.clean.core.usecase.scheduler.ScheduleInterviewUseCase;
 import org.springframework.context.annotation.Bean;

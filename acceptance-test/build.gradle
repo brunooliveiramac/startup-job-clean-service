@@ -1,0 +1,7 @@
+dependencies {
+    compile project(":application:configuration")
+
+    compile libs.acceptance_test
+}
+
+

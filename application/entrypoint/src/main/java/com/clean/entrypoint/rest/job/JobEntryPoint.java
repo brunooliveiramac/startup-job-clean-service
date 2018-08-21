@@ -2,7 +2,7 @@ package com.clean.entrypoint.rest.job;
 
 import com.clean.core.gateway.ff4j.*;
 import com.clean.core.entity.JobDomain;
-import com.clean.core.usecase.jobservice.ObtainJobOpportunitiesUseCase;
+import com.clean.core.usecase.job.ObtainJobOpportunitiesUseCase;
 import com.clean.core.usecase.scheduler.ScheduleInterviewUseCase;
 import com.clean.entrypoint.rest.job.model.JobModel;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
@@ -31,6 +31,7 @@ public class JobEntryPoint {
 
     private FeatureToggleGateway featureToggleGateway;
     private ObtainJobOpportunitiesUseCase obtainJobOpportunitiesUseCase;
+
     private ScheduleInterviewUseCase scheduleInterviewUseCase;
 
     public JobEntryPoint(FeatureToggleGateway featureToggleGateway,
@@ -58,10 +59,10 @@ public class JobEntryPoint {
         System.out.println("Call JOB MicroService");
         if(featureToggleGateway.isFeatureEnable(Features.SCHEDULER)){
             System.out.println("Enabled");
+            scheduleInterviewUseCase.scheduleInterview();
         } else {
             System.out.println("Disabled");
         }
-        scheduleInterviewUseCase.scheduleInterview();
     }
 
     public void scheduleFallBack() {

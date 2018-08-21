@@ -1,6 +1,6 @@
 package com.clean.configuration.entrypoints;
 import com.clean.core.gateway.ff4j.*;
-import com.clean.core.usecase.jobservice.ObtainJobOpportunitiesUseCase;
+import com.clean.core.usecase.job.ObtainJobOpportunitiesUseCase;
 import com.clean.core.usecase.scheduler.ScheduleInterviewUseCase;
 import com.clean.entrypoint.rest.job.JobEntryPoint;
 import org.springframework.context.annotation.Bean;
