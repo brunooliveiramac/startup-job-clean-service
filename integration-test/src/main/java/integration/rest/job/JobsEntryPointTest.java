@@ -23,14 +23,10 @@ public class JobsEntryPointTest extends ApplicationContext {
         obtainJobOpportunitiesUseCase = Mockito.mock(ObtainAllJobsUseCase.class);
         when(obtainJobOpportunitiesUseCase.obtainJobOpportunities())
                 .thenReturn(Arrays.asList(new JobDomain()));
-        performGet();
+        performGetJobs();
     }
 
-    public void shouldNotScheduleJobInterviewWhenToggleIsDisable(){
-
-    }
-
-    private MvcResult performGet() throws Exception {
+    private MvcResult performGetJobs() throws Exception {
        return mock.perform(MockMvcRequestBuilders.get("/jobs")
                 .contentType(MediaType.APPLICATION_XML_VALUE))
                 .andExpect(status().is(200))

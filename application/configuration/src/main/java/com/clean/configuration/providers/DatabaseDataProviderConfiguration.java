@@ -1,8 +1,8 @@
 package com.clean.configuration.providers;
 
 import com.clean.core.dataproviders.database.job.JobDatabaseDataProvider;
-import com.clean.core.dataproviders.scheduler.Scheduler;
-import com.clean.core.dataproviders.scheduler.SchedulerClient;
+import com.clean.core.dataproviders.network.scheduler.Scheduler;
+import com.clean.core.dataproviders.network.scheduler.SchedulerClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

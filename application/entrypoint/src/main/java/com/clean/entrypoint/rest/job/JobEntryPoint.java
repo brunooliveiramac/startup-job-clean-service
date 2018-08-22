@@ -28,46 +28,28 @@ public class JobEntryPoint {
     public static final String JOB_PATH = "/jobs";
     public static final String SCHEDULE_PATH = "/schedule";
 
-
-    private FeatureToggle featureToggleGateway;
+    private FeatureToggle featureToggleUseCase;
     private ObtainAllJobsUseCase obtainJobOpportunitiesUseCase;
-
     private ScheduleInterviewUseCase scheduleInterviewUseCase;
 
-    public JobEntryPoint(FeatureToggle featureToggleGateway,
+    public JobEntryPoint(FeatureToggle featureToggle,
                          ObtainAllJobsUseCase obtainJobOpportunitiesUseCase,
                          ScheduleInterviewUseCase scheduleInterviewUseCase) {
-        this.featureToggleGateway = featureToggleGateway;
+        this.featureToggleUseCase = featureToggle;
         this.obtainJobOpportunitiesUseCase = obtainJobOpportunitiesUseCase;
         this.scheduleInterviewUseCase = scheduleInterviewUseCase;
     }
 
     @RequestMapping(value = JOB_PATH, method = GET)
-    public List<JobModel> getDetails() throws InterruptedException {
-        Thread.sleep(5000);
+    public List<JobModel> getJobs() {
         return toModel(obtainJobOpportunitiesUseCase.obtainJobOpportunities());
     }
 
     @RequestMapping(value = JOB_PATH + "/{id}", method = GET)
     public JobModel detail(@PathVariable("id") Integer id) {
-        return toModel(obtainJobOpportunitiesUseCase.jobDetail(id));
+        return null;
     }
 
-    @HystrixCommand(fallbackMethod = "scheduleFallBack")
-    @RequestMapping(value = SCHEDULE_PATH, method = POST)
-    public void schedule() {
-        System.out.println("Call JOB MicroService");
-        if(featureToggleGateway.isFeatureEnable(Features.SCHEDULER)){
-            System.out.println("Enabled");
-            scheduleInterviewUseCase.scheduleInterview();
-        } else {
-            System.out.println("Disabled");
-        }
-    }
-
-    public void scheduleFallBack() {
-        System.out.println("Call JOB MicroService FallBack");
-    }
 
     public List<JobModel> toModel(List<JobDomain> jobDomains) {
         return jobDomains.stream().map(jobDomain -> toModel(jobDomain)).collect(Collectors.toList());
@@ -82,5 +64,34 @@ public class JobEntryPoint {
                 .company(jobDomain.company())
                 .local(jobDomain.local())
                 .build();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    @HystrixCommand(fallbackMethod = "scheduleFallBack")
+    @RequestMapping(value = SCHEDULE_PATH, method = POST)
+    public void schedule() {
+        System.out.println("Call JOB MicroService");
+        if(featureToggleUseCase.isFeatureEnable(Features.SCHEDULER)){
+            System.out.println("Enabled");
+            scheduleInterviewUseCase.scheduleInterview();
+        } else {
+            System.out.println("Disabled");
+        }
+    }
+
+    public void scheduleFallBack() {
+        System.out.println("Call JOB MicroService FallBack");
     }
 }

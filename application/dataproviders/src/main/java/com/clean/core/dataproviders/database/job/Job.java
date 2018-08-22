@@ -8,7 +8,7 @@ public class Job {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "job_id")
-    private Integer id;
+    private int id;
 
     @Column
     private String description;
@@ -34,12 +34,37 @@ public class Job {
     @JoinColumn(name = "collaborator_id")
     private Collaborator collaborator;
 
+    @Column
+    private double salary;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "job_type")
+    private JobType jobType;
+
+    public Job() {
+    }
+
+    public Job(String name, int quantity, double salary, JobType jobType, Company company) {
+        this.name = name;
+        this.quantity = quantity;
+        this.salary = salary;
+        this.jobType = jobType;
+        this.company = company;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
 
     public String getDescription() {
         return description;
     }
 
-    public Integer getId() {
+    public JobType getJobType() {
+        return jobType;
+    }
+
+    public int getId() {
         return id;
     }
 

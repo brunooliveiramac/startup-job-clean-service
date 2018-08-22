@@ -17,6 +17,10 @@ public class Company {
     @OneToMany(mappedBy = "company", cascade = CascadeType.ALL)
     private List<Job> jobs;
 
+    public Company(String name) {
+        this.name = name;
+    }
+
     public Company() {
     }
 

@@ -11,9 +11,9 @@ formatter.feature({
     }
   ],
   "line": 5,
-  "name": "Job",
+  "name": "Listagem de vagas",
   "description": "",
-  "id": "job",
+  "id": "listagem-de-vagas",
   "keyword": "Funcionalidade",
   "tags": [
     {
@@ -21,42 +21,6 @@ formatter.feature({
       "name": "@Job"
     }
   ]
-});
-formatter.scenarioOutline({
-  "line": 10,
-  "name": "Operador realiza o cadastro da ordem de serviço manualmente e verifica os status dela",
-  "description": "",
-  "id": "job;operador-realiza-o-cadastro-da-ordem-de-serviço-manualmente-e-verifica-os-status-dela",
-  "type": "scenario_outline",
-  "keyword": "Esquema do Cenario"
-});
-formatter.step({
-  "line": 11,
-  "name": "que eu preencho todos os dados do paciente \u003cPACIENTE\u003e",
-  "keyword": "E "
-});
-formatter.examples({
-  "line": 12,
-  "name": "",
-  "description": "",
-  "id": "job;operador-realiza-o-cadastro-da-ordem-de-serviço-manualmente-e-verifica-os-status-dela;",
-  "rows": [
-    {
-      "cells": [
-        "PACIENTE"
-      ],
-      "line": 13,
-      "id": "job;operador-realiza-o-cadastro-da-ordem-de-serviço-manualmente-e-verifica-os-status-dela;;1"
-    },
-    {
-      "cells": [
-        "Frodo Baggins"
-      ],
-      "line": 14,
-      "id": "job;operador-realiza-o-cadastro-da-ordem-de-serviço-manualmente-e-verifica-os-status-dela;;2"
-    }
-  ],
-  "keyword": "Exemplos"
 });
 formatter.background({
   "line": 7,
@@ -67,43 +31,46 @@ formatter.background({
 });
 formatter.step({
   "line": 8,
-  "name": "que isso funcione",
+  "name": "que eu esteja logado",
   "keyword": "Dado "
 });
 formatter.match({
-  "location": "JobSteps.que_isso_funcione()"
+  "location": "ObtainAllJobsUseCaseSteps.que_eu_esteja_logado()"
 });
 formatter.result({
-  "duration": 556353067,
+  "duration": 479675277,
   "status": "passed"
 });
 formatter.scenario({
-  "line": 14,
-  "name": "Operador realiza o cadastro da ordem de serviço manualmente e verifica os status dela",
+  "line": 10,
+  "name": "Usuario vizualiza vagas retornadas ao carregar pagina",
   "description": "",
-  "id": "job;operador-realiza-o-cadastro-da-ordem-de-serviço-manualmente-e-verifica-os-status-dela;;2",
+  "id": "listagem-de-vagas;usuario-vizualiza-vagas-retornadas-ao-carregar-pagina",
   "type": "scenario",
-  "keyword": "Esquema do Cenario",
-  "tags": [
-    {
-      "line": 4,
-      "name": "@Job"
-    }
-  ]
+  "keyword": "Cenario"
 });
 formatter.step({
   "line": 11,
-  "name": "que eu preencho todos os dados do paciente Frodo Baggins",
-  "matchedColumns": [
-    0
-  ],
+  "name": "carrego a pagina de vagas",
   "keyword": "E "
 });
+formatter.step({
+  "line": 12,
+  "name": "as vagas são retornadas",
+  "keyword": "Entao "
+});
 formatter.match({
-  "location": "JobSteps.que_eu_preencho_todos_os_dados_do_paciente_Frodo_Baggins()"
+  "location": "ObtainAllJobsUseCaseSteps.carrego_a_pagina_de_vagas()"
 });
 formatter.result({
-  "duration": 49933,
+  "duration": 16565601,
+  "status": "passed"
+});
+formatter.match({
+  "location": "ObtainAllJobsUseCaseSteps.as_vagas_são_retornadas()"
+});
+formatter.result({
+  "duration": 3046716,
   "status": "passed"
 });
 });

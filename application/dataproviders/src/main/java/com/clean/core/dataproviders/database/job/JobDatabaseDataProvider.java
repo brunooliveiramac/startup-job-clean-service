@@ -1,6 +1,7 @@
 package com.clean.core.dataproviders.database.job;
 
 import com.clean.core.entity.JobDomain;
+import com.clean.core.entity.JobTypeDomain;
 import com.clean.core.usecase.job.ObtainJobDetail;
 import com.clean.core.usecase.job.ObtainAllJobs;
 
@@ -25,15 +26,20 @@ public class JobDatabaseDataProvider implements ObtainAllJobs, ObtainJobDetail {
         return jobs.stream().map(job -> toDomain(job)).collect(Collectors.toList());
     }
 
-    private JobDomain toDomain(Job job){
+    private JobDomain toDomain(Job job) {
         return JobDomain.Builder.create()
                 .id(job.getId())
+                .type(toTypeDomain(job.getJobType().getValue()))
                 .description(job.getDescription())
                 .quantity(job.getQuantity())
                 .name(job.getName())
                 .company(job.getCompany().getName())
                 .local(job.getLocal())
                 .build();
+    }
+
+    private JobTypeDomain toTypeDomain(String value) {
+        return JobTypeDomain.getByValue(value);
     }
 
     @Override

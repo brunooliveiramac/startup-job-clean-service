@@ -2,14 +2,11 @@
 #encoding: utf-8
 
 @Job
-Funcionalidade: Job
+Funcionalidade: Listagem de vagas
 
   Contexto:
-    Dado que isso funcione
+    Dado que eu esteja logado
 
-  Esquema do Cenario: Operador realiza o cadastro da ordem de serviço manualmente e verifica os status dela
-    E que eu preencho todos os dados do paciente <PACIENTE>
-    Exemplos:
-      | PACIENTE      |
-      | Frodo Baggins |
-
+  Cenario: Usuario vizualiza vagas retornadas ao carregar pagina
+    E carrego a pagina de vagas
+    Entao as vagas são retornadas

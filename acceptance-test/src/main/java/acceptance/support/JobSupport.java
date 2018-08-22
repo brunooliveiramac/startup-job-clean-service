@@ -16,16 +16,15 @@ public class JobSupport {
 
     private ObtainAllJobsUseCase obtainJobOpportunitiesUseCase;
 
-    private ObtainAllJobs obtainJobs;
-    private ObtainJobDetail jobDetail;
+    private ObtainAllJobs obtainJobs = Mockito.mock(ObtainAllJobs.class);
+    private ObtainJobDetail obtainJobDetail = Mockito.mock(ObtainJobDetail.class);
+
+    public void whenPerformSearch(){
+        when(obtainJobs.obtainJobs()).thenReturn(Arrays.asList(new JobDomain()));
+    }
 
     public void shouldReturnJobs() {
-        obtainJobs = Mockito.mock(ObtainAllJobs.class);
-        jobDetail = Mockito.mock(ObtainJobDetail.class);
-
-        obtainJobOpportunitiesUseCase = new ObtainAllJobsUseCase(obtainJobs, jobDetail);
-
-        when(obtainJobs.obtainJobs()).thenReturn(Arrays.asList(new JobDomain()));
+        obtainJobOpportunitiesUseCase = new ObtainAllJobsUseCase(obtainJobs, obtainJobDetail);
         List<JobDomain> jobDomains = obtainJobOpportunitiesUseCase.obtainJobOpportunities();
         assertNotNull(jobDomains);
     }

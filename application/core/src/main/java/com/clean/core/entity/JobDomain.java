@@ -20,6 +20,18 @@ public class JobDomain {
 
     private Category category;
 
+    private JobTypeDomain jobTypeDomain;
+
+    private double salary;
+
+    public double salary() {
+        return salary;
+    }
+
+    public void salary(double salary){
+        this.salary = salary;
+    }
+
     public String description() {
         return description;
     }
@@ -56,6 +68,10 @@ public class JobDomain {
         return jobId;
     }
 
+    public JobTypeDomain getJobTypeDomain() {
+        return jobTypeDomain;
+    }
+
     public static class Builder {
 
         private int id;
@@ -64,6 +80,7 @@ public class JobDomain {
         private String company;
         private String local;
         private int quantity;
+        private JobTypeDomain jobTypeDomain;
 
 
 
@@ -76,8 +93,13 @@ public class JobDomain {
         }
 
 
-        public Builder id(Integer id) {
+        public Builder id(int id) {
             this.id = id;
+            return this;
+        }
+
+        public Builder type(JobTypeDomain jobTypeDomain) {
+            this.jobTypeDomain = jobTypeDomain;
             return this;
         }
 
@@ -114,11 +136,9 @@ public class JobDomain {
             job.local = local;
             job.quantity = quantity;
             job.jobId = id;
+            job.jobTypeDomain = jobTypeDomain;
             return job;
         }
-
-
-
     }
 
 }
