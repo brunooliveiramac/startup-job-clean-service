@@ -1,7 +1,7 @@
 #language: pt
 #encoding: utf-8
 
-@Job
+@AllJobs
 Funcionalidade: Listagem de vagas
 
   Contexto:

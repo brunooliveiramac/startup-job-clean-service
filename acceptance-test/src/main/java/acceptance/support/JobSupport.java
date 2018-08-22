@@ -19,12 +19,12 @@ public class JobSupport {
     private ObtainAllJobs obtainJobs = Mockito.mock(ObtainAllJobs.class);
     private ObtainJobDetail obtainJobDetail = Mockito.mock(ObtainJobDetail.class);
 
-    public void whenPerformSearch(){
+    public void whenPerformSearch() {
         when(obtainJobs.obtainJobs()).thenReturn(Arrays.asList(new JobDomain()));
     }
 
     public void shouldReturnJobs() {
-        obtainJobOpportunitiesUseCase = new ObtainAllJobsUseCase(obtainJobs, obtainJobDetail);
+        obtainJobOpportunitiesUseCase = new ObtainAllJobsUseCase(obtainJobs);
         List<JobDomain> jobDomains = obtainJobOpportunitiesUseCase.obtainJobOpportunities();
         assertNotNull(jobDomains);
     }

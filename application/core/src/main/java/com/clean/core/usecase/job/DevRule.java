@@ -11,6 +11,6 @@ public class DevRule implements JobRule{
 
     @Override
     public double calculate(double value) {
-        return 0;
+        return value * 0.10;
     }
 }

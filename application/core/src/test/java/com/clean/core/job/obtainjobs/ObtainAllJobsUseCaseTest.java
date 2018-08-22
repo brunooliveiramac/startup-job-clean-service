@@ -17,7 +17,7 @@ public class ObtainAllJobsUseCaseTest {
     ObtainAllJobs obtainAllJobs = mock(ObtainAllJobs.class);
 
     @Test
-    public void shouldReturnAllJobs() {
+    public void shouldReturnThreeJobs() {
         List<JobDomain> jobDomains = givenJobsFound();
         assertEquals(3, jobDomains.size());
     }
