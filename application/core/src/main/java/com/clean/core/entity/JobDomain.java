@@ -80,6 +80,7 @@ public class JobDomain {
         private String company;
         private String local;
         private int quantity;
+        private double salary;
         private JobTypeDomain jobTypeDomain;
 
 
@@ -128,6 +129,11 @@ public class JobDomain {
             return this;
         }
 
+        public Builder salary(double salary) {
+            this.salary = salary;
+            return this;
+        }
+
         public JobDomain build() {
             JobDomain job = new JobDomain();
             job.description = description;
@@ -137,6 +143,7 @@ public class JobDomain {
             job.quantity = quantity;
             job.jobId = id;
             job.jobTypeDomain = jobTypeDomain;
+            job.salary = salary;
             return job;
         }
     }

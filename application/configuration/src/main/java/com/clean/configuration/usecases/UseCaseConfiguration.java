@@ -3,6 +3,8 @@ package com.clean.configuration.usecases;
 
 import com.clean.core.usecase.job.ObtainAllJobs;
 import com.clean.core.usecase.job.ObtainAllJobsUseCase;
+import com.clean.core.usecase.job.ObtainJobDetail;
+import com.clean.core.usecase.job.ObtainJobDetailUseCase;
 import com.clean.core.usecase.scheduler.ScheduleInterview;
 import com.clean.core.usecase.scheduler.ScheduleInterviewUseCase;
 import org.springframework.context.annotation.Bean;
@@ -20,4 +22,10 @@ public class UseCaseConfiguration {
     public ScheduleInterviewUseCase scheduleInterviewUseCase(ScheduleInterview scheduleInterview){
         return new ScheduleInterviewUseCase(scheduleInterview);
     }
+
+    @Bean
+    public ObtainJobDetailUseCase obtainJobDetail(ObtainJobDetail obtainJobDetail) {
+        return new ObtainJobDetailUseCase(obtainJobDetail);
+    }
+
 }

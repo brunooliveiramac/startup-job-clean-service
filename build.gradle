@@ -132,6 +132,19 @@ subprojects {
                     "junit:junit:4.+",
                     'org.mockito:mockito-all:1.9.5',
                     "org.springframework.boot:spring-boot-starter-test:${springboot_version}"
+            ],
+
+
+            end_to_end                      : [
+                    "com.github.tomakehurst:wiremock-standalone:2.16.0",
+                    "junit:junit:4.+",
+                    'org.mockito:mockito-all:1.9.5',
+                    "org.springframework.boot:spring-boot-starter-test:${springboot_version}",
+                    'info.cukes:cucumber-java:1.2.5',
+                    'info.cukes:cucumber-junit:1.2.5',
+                    'info.cukes:cucumber-spring:1.2.5',
+                    'org.mockito:mockito-all:1.9.5',
+                    'io.rest-assured:rest-assured:3.0.3'
             ]
 
     ]
@@ -145,6 +158,9 @@ configure(allprojects - project(":application")) {
 
 subprojects { subproject ->
     if (subproject.name.startsWith("acceptance")) {
+        apply plugin: 'com.github.samueltbrown.cucumber'
+    }
+    if (subproject.name.startsWith("end-to-end-test")) {
         apply plugin: 'com.github.samueltbrown.cucumber'
     }
 }

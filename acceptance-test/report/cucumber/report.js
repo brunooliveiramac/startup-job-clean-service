@@ -1,4 +1,4 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("acceptance/features/ObtainJobDetail.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("acceptance/features/ObtainJobDetails.feature");
 formatter.feature({
   "comments": [
     {
@@ -11,14 +11,14 @@ formatter.feature({
     }
   ],
   "line": 5,
-  "name": "Detalhamento da vaga",
+  "name": "Obter Detalhes Da Vaga",
   "description": "",
-  "id": "detalhamento-da-vaga",
+  "id": "obter-detalhes-da-vaga",
   "keyword": "Funcionalidade",
   "tags": [
     {
       "line": 4,
-      "name": "@JobDetail"
+      "name": "@JobDetails"
     }
   ]
 });
@@ -31,41 +31,47 @@ formatter.background({
 });
 formatter.step({
   "line": 8,
-  "name": "que eu esteja logado",
+  "name": "que eu esteja na tela de visualizacao da lista de vagas",
   "keyword": "Dado "
 });
 formatter.match({
-  "location": "ObtainAllJobsUseCaseSteps.que_eu_esteja_logado()"
+  "location": "ObtainJobDetailsStep.que_eu_esteja_na_tela_de_visualizacao_da_lista_de_vagas()"
 });
 formatter.result({
-  "duration": 417608035,
+  "duration": 479783576,
   "status": "passed"
 });
 formatter.scenario({
   "line": 10,
-  "name": "Usuario visualiza detalhe da vaga de Dev com acrescimo de 10%",
+  "name": "Usuario acessa a vaga especificada e visualiza seus detalhes",
   "description": "",
-  "id": "detalhamento-da-vaga;usuario-visualiza-detalhe-da-vaga-de-dev-com-acrescimo-de-10%",
+  "id": "obter-detalhes-da-vaga;usuario-acessa-a-vaga-especificada-e-visualiza-seus-detalhes",
   "type": "scenario",
   "keyword": "Cenario"
 });
 formatter.step({
   "line": 11,
-  "name": "visualizo a vaga de Dev",
-  "keyword": "E "
+  "name": "Quando eu clicar sobre uma vaga",
+  "keyword": "Quando "
 });
 formatter.step({
   "line": 12,
-  "name": "vejo um acrescimo de 10% no salario",
+  "name": "Eu devo ser direcionado para a tela contendo seus detalhes",
   "keyword": "Entao "
 });
-formatter.match({});
-formatter.result({
-  "status": "undefined"
+formatter.match({
+  "location": "ObtainJobDetailsStep.quando_eu_clicar_sobre_uma_vaga()"
 });
-formatter.match({});
 formatter.result({
-  "status": "undefined"
+  "duration": 75944,
+  "status": "passed"
+});
+formatter.match({
+  "location": "ObtainJobDetailsStep.eu_devo_ser_direcionado_para_a_tela_contendo_seus_detalhes()"
+});
+formatter.result({
+  "duration": 212462580,
+  "status": "passed"
 });
 formatter.uri("acceptance/features/ObtainJobs.feature");
 formatter.feature({
@@ -107,7 +113,7 @@ formatter.match({
   "location": "ObtainAllJobsUseCaseSteps.que_eu_esteja_logado()"
 });
 formatter.result({
-  "duration": 523030,
+  "duration": 16337829,
   "status": "passed"
 });
 formatter.scenario({
@@ -132,14 +138,14 @@ formatter.match({
   "location": "ObtainAllJobsUseCaseSteps.carrego_a_pagina_de_vagas()"
 });
 formatter.result({
-  "duration": 23539235,
+  "duration": 2943745,
   "status": "passed"
 });
 formatter.match({
   "location": "ObtainAllJobsUseCaseSteps.as_vagas_são_retornadas()"
 });
 formatter.result({
-  "duration": 2731633,
+  "duration": 2490571,
   "status": "passed"
 });
 });

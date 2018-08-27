@@ -23,6 +23,8 @@ public class JobModel {
 
     private Category category;
 
+    private double salary;
+
     public static class Builder {
 
         private int id;
@@ -31,8 +33,7 @@ public class JobModel {
         private int quantity;
         private String company;
         private String local;
-
-
+        private double salary;
 
         private Builder() {
             //Not implemented
@@ -72,6 +73,11 @@ public class JobModel {
             return this;
         }
 
+        public Builder salary(double salary) {
+            this.salary = salary;
+            return this;
+        }
+
         public JobModel build() {
             JobModel job = new JobModel();
             job.desciption = description;
@@ -80,11 +86,9 @@ public class JobModel {
             job.name = name;
             job.local = local;
             job.jobId = id;
+            job.salary = salary;
             return job;
         }
-
-
-
     }
 
 }

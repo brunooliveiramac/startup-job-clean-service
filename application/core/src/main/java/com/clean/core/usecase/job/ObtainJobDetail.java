@@ -5,5 +5,4 @@ import com.clean.core.entity.JobDomain;
 public interface ObtainJobDetail {
 
     JobDomain byId(Integer id);
-
 }

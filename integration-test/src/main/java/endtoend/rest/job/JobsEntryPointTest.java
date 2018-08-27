@@ -1,8 +1,8 @@
-package integration.rest.job;
+package endtoend.rest.job;
 
 import com.clean.core.entity.JobDomain;
 import com.clean.core.usecase.job.ObtainAllJobsUseCase;
-import integration.rest.ApplicationContext;
+import endtoend.rest.ApplicationContext;
 import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.http.MediaType;

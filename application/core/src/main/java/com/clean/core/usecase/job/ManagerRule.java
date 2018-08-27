@@ -4,6 +4,7 @@ import com.clean.core.entity.JobTypeDomain;
 
 public class ManagerRule implements JobRule {
 
+
     @Override
     public boolean match(JobTypeDomain jobTypeDomain) {
         return jobTypeDomain == JobTypeDomain.MANAGER;
@@ -11,6 +12,6 @@ public class ManagerRule implements JobRule {
 
     @Override
     public double calculate(double value) {
-        return value * 0.30;
+        return value * 1.3;
     }
 }

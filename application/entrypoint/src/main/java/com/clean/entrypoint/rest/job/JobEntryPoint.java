@@ -3,6 +3,8 @@ package com.clean.entrypoint.rest.job;
 import com.clean.core.usecase.ff4j.*;
 import com.clean.core.entity.JobDomain;
 import com.clean.core.usecase.job.ObtainAllJobsUseCase;
+import com.clean.core.usecase.job.ObtainJobDetail;
+import com.clean.core.usecase.job.ObtainJobDetailUseCase;
 import com.clean.core.usecase.scheduler.ScheduleInterviewUseCase;
 import com.clean.entrypoint.rest.job.model.JobModel;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
@@ -31,13 +33,16 @@ public class JobEntryPoint {
     private FeatureToggle featureToggleUseCase;
     private ObtainAllJobsUseCase obtainJobOpportunitiesUseCase;
     private ScheduleInterviewUseCase scheduleInterviewUseCase;
+    private ObtainJobDetailUseCase obtainJobDetailUseCase;
 
     public JobEntryPoint(FeatureToggle featureToggle,
                          ObtainAllJobsUseCase obtainJobOpportunitiesUseCase,
-                         ScheduleInterviewUseCase scheduleInterviewUseCase) {
+                         ScheduleInterviewUseCase scheduleInterviewUseCase,
+                         ObtainJobDetailUseCase obtainJobDetailUseCase) {
         this.featureToggleUseCase = featureToggle;
         this.obtainJobOpportunitiesUseCase = obtainJobOpportunitiesUseCase;
         this.scheduleInterviewUseCase = scheduleInterviewUseCase;
+        this.obtainJobDetailUseCase = obtainJobDetailUseCase;
     }
 
     @RequestMapping(value = JOB_PATH, method = GET)
@@ -47,9 +52,13 @@ public class JobEntryPoint {
 
     @RequestMapping(value = JOB_PATH + "/{id}", method = GET)
     public JobModel detail(@PathVariable("id") Integer id) {
-        return null;
+        return this.toModel(this.obtainJobDetailUseCase.detail(id));
     }
 
+    @RequestMapping(value = JOB_PATH + "/{id}", method = POST)
+    public JobModel enrol(@PathVariable("id") Integer id) {
+        return this.toModel(this.obtainJobDetailUseCase.detail(id));
+    }
 
     public List<JobModel> toModel(List<JobDomain> jobDomains) {
         return jobDomains.stream().map(jobDomain -> toModel(jobDomain)).collect(Collectors.toList());
@@ -63,27 +72,16 @@ public class JobEntryPoint {
                 .quantity(jobDomain.quantity())
                 .company(jobDomain.company())
                 .local(jobDomain.local())
+                .salary(jobDomain.salary())
                 .build();
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     @HystrixCommand(fallbackMethod = "scheduleFallBack")
     @RequestMapping(value = SCHEDULE_PATH, method = POST)
     public void schedule() {
         System.out.println("Call JOB MicroService");
-        if(featureToggleUseCase.isFeatureEnable(Features.SCHEDULER)){
+        if (featureToggleUseCase.isFeatureEnable(Features.SCHEDULER)) {
             System.out.println("Enabled");
             scheduleInterviewUseCase.scheduleInterview();
         } else {

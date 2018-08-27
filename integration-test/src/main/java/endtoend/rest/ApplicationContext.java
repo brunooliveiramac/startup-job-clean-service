@@ -1,4 +1,4 @@
-package integration.rest;
+package endtoend.rest;
 
 
 import com.clean.Application;

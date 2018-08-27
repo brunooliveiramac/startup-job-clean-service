@@ -35,6 +35,7 @@ public class JobDatabaseDataProvider implements ObtainAllJobs, ObtainJobDetail {
                 .name(job.getName())
                 .company(job.getCompany().getName())
                 .local(job.getLocal())
+                .salary(job.getSalary())
                 .build();
     }
 
@@ -44,7 +45,7 @@ public class JobDatabaseDataProvider implements ObtainAllJobs, ObtainJobDetail {
 
     @Override
     public JobDomain byId(Integer id) {
-        return toDomain((Job) manager.createQuery("FROM Job j WHERE  j.id =: id")
+        return toDomain((Job) manager.createQuery("FROM Job j WHERE  j.id = :id")
                 .setParameter("id", id).getSingleResult());
     }
 }

@@ -1,0 +1,8 @@
+dependencies {
+    compile project(":application:configuration")
+
+    compile libs.spring_boot
+    compile libs.end_to_end
+}
+
+

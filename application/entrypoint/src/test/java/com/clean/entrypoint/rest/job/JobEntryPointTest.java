@@ -3,6 +3,7 @@ package com.clean.entrypoint.rest.job;
 import com.clean.core.entity.JobDomain;
 import com.clean.core.usecase.ff4j.FeatureToggle;
 import com.clean.core.usecase.job.ObtainAllJobsUseCase;
+import com.clean.core.usecase.job.ObtainJobDetailUseCase;
 import com.clean.core.usecase.scheduler.ScheduleInterviewUseCase;
 import com.clean.entrypoint.rest.job.model.JobModel;
 import org.assertj.core.api.Assertions;
@@ -16,11 +17,12 @@ import static org.mockito.Mockito.when;
 
 public class JobEntryPointTest {
 
+    ObtainJobDetailUseCase obtainJobDetail = mock(ObtainJobDetailUseCase.class);
     ObtainAllJobsUseCase obtainAllJobsUseCase = mock(ObtainAllJobsUseCase.class);
     FeatureToggle featureToggle = mock(FeatureToggle.class);
     ScheduleInterviewUseCase scheduleInterviewUseCase = mock(ScheduleInterviewUseCase.class);
 
-    JobEntryPoint jobEntryPoint = new JobEntryPoint(featureToggle, obtainAllJobsUseCase, scheduleInterviewUseCase);
+    JobEntryPoint jobEntryPoint = new JobEntryPoint(featureToggle, obtainAllJobsUseCase, scheduleInterviewUseCase, obtainJobDetail);
 
     @Test
     public void shouldReturnJobs() {

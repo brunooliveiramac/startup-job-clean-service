@@ -11,6 +11,6 @@ public class QARule implements JobRule {
 
     @Override
     public double calculate(double value) {
-        return value * 0.20;
+        return value * 1.20;
     }
 }
